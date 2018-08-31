@@ -6,7 +6,7 @@ RUN a2enmod rewrite expires
 
 # install the PHP extensions we need
 RUN apt-get update
-RUN apt-get install -y libpng-dev libjpeg-dev zlib1g-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y git libpng-dev libjpeg-dev zlib1g-dev && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
 RUN docker-php-ext-install gd mysqli opcache zip mbstring
 
