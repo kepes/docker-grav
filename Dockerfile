@@ -5,9 +5,10 @@ FROM php:7.0-apache
 RUN a2enmod rewrite expires
 
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y git libpng12-dev libjpeg-dev zlib1g-dev && rm -rf /var/lib/apt/lists/* \
-	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-	&& docker-php-ext-install gd mysqli opcache zip mbstring
+RUN apt-get update
+RUN apt-get install -y libpng-dev libjpeg-dev zlib1g-dev && rm -rf /var/lib/apt/lists/*
+RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
+RUN docker-php-ext-install gd mysqli opcache zip mbstring
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
