@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  grav:
+    build: .
+    ports:
+      - "8083:80"
+      - "8443:443"
+    volumes:
+      - ./docker-entrypoint.sh:/entrypoint.sh
+      - ./user:/var/www/html/user
