@@ -6,7 +6,7 @@ RUN a2enmod rewrite expires
 
 # install the PHP extensions we need
 RUN apt-get update
-RUN apt-get install -y git libpng-dev libjpeg-dev zlib1g-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y git libpng-dev libjpeg-dev zlib1g-dev rsync && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
 RUN docker-php-ext-install gd mysqli opcache zip mbstring
 
@@ -21,7 +21,7 @@ RUN { \
 		echo 'opcache.enable_cli=1'; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
-ENV GRAV_VERSION 1.5.1
+ENV GRAV_VERSION 1.6.16
 ENV APACHE_RUN_USER 'web'
 ENV APACHE_RUN_GROUP 'staff'
 
